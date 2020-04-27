@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Landboard.iml" filepath="$PROJECT_DIR$/.idea/Landboard.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/Projects/landboard/.idea/landboard.iml" filepath="$USER_HOME$/Documents/Projects/landboard/.idea/landboard.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/Projects/smart-tourist-guide/.idea/smart-tourist-guide.iml" filepath="$USER_HOME$/Documents/Projects/smart-tourist-guide/.idea/smart-tourist-guide.iml" />
+    </modules>
+  </component>
+</project>
