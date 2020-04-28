@@ -1,12 +1,12 @@
 <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="{{ route('home') }}" class="simple-text logo-mini">
             <div class="logo-image-small">
-                <img src="{{ asset('paper') }}/img/logo-small.png">
+                <img src="{{ asset('img') }}/bw-gov-logo.jpg">
             </div>
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-            {{ __('Creative Tim') }}
+        <a href="{{ route('home') }}" class="simple-text logo-normal">
+            {{ __('BW Landboard MS') }}
         </a>
     </div>
     <div class="sidebar-wrapper">

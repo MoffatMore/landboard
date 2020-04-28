@@ -1,11 +1,10 @@
 @extends('layouts.app', [
     'class' => 'login-page',
-    'backgroundImagePath' => 'img/bg/fabio-mangione.jpg'
 ])
 
 @section('content')
     <div class="content">
-        <div class="container">
+        <div class="container-fluid">
             <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                 <form class="form" method="POST" action="{{ route('login') }}">
                     @csrf
@@ -20,7 +19,7 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                        <i class="nc-icon nc-single-02"></i>
+                                        <i class="fa fa-user"></i>
                                     </span>
                                 </div>
                                 <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" required autofocus>
@@ -35,7 +34,7 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                        <i class="nc-icon nc-single-02"></i>
+                                        <i class="fa fa-lock"></i>
                                     </span>
                                 </div>
                                 <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Password') }}" type="password" required>

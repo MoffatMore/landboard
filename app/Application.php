@@ -13,4 +13,9 @@ class Application extends Model
         'plot_address',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

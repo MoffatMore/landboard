@@ -16,4 +16,9 @@ class Profile extends Model
         'postal_address',
         'physical_address',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
