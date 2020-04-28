@@ -109,6 +109,5 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="smart-tourist-guide" />
     <orderEntry type="module" module-name="smart-tourist-guide" />
-    <orderEntry type="module" module-name="landboard" />
   </component>
 </module>

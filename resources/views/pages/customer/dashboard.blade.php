@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-globe text-warning"></i>
+                                    <i class="fa fa-audio-description text-warning"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
@@ -27,7 +27,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Click here
+                            <a href="#"><i class="fa fa-arrow-circle-right"></i> Click here</a>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-calendar-o"></i> Click here
+                            <a href="{{ route('customer.application') }}"><i class="fa fa-arrow-circle-right"></i> Click here</a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-clock-o"></i> Click here
+                            <a href="#"><i class="fa fa-arrow-circle-right"></i> Click here</a>
                         </div>
                     </div>
                 </div>

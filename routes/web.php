@@ -29,9 +29,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+    Route::group(['prefix'=>'user', 'namespace'=>'Customer', 'as'=>'customer.'],function (){
+        Route::get('/dashboard', 'HomeController@index');
+        Route::get('/application', 'HomeController@application')->name('application');
+    });
 });
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
 });
-
