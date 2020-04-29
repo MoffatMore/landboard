@@ -5,13 +5,37 @@
 
 @section('content')
     <div class="container-fluid " style="margin-top: 100px">
-        <div class="card ">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pending Applications</li>
+                </ol>
+            </nav>
+        </div>
+        @if(Session::has('status'))
+            <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                <strong>Alert!</strong> {{  Session::get('status') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if(Session::has('fail'))
+            <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                <strong>Alert!</strong> {{  Session::get('fail') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        <div class="card border-info">
             <div class="card-header">
                 <h4 class="card-title">My Pending Applications</h4>
             </div>
             <div class="card-body">
                 <input type="hidden" name="_token" value="{{ @csrf_token() }}">
-                <table class="table">
+                <table id="example" class="table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th class="text-center">#</th>

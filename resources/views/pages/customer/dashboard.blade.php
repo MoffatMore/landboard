@@ -5,6 +5,23 @@
 
 @section('content')
     <div class="content">
+        @if(Session::has('status'))
+            <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                <strong>Alert!</strong> {{  Session::get('status') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if(Session::has('fail'))
+            <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                <strong>Alert!</strong> {{  Session::get('fail') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
