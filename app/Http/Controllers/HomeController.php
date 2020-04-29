@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -19,10 +21,10 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return View
+     * @return RedirectResponse
      */
     public function index()
     {
-        return view('pages.dashboard');
+        return redirect(RouteServiceProvider::redirectPath());
     }
 }

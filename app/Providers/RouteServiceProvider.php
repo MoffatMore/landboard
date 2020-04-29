@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -22,6 +23,9 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
+
+    public const ADMIN = 'admin.dashboard';
+    public const CUSTOMER= 'customer.dashboard';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -76,5 +80,19 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
+    }
+
+    public static function redirectPath()
+    {
+        $user = Auth::user();
+
+        if ($user->hasRole('admin')) {
+            return route(self::ADMIN);
+        } elseif ($user->hasRole('customer')) {
+            return route(self::CUSTOMER);
+
+        } else {
+            abort(401);
+        }
     }
 }

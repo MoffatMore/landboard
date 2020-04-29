@@ -9,9 +9,9 @@
             <div class="container col-md-10">
                 <div class="header-body text-center mb-7">
                     <div class="row justify-content-center">
-                        <div class="col-lg-8 col-md-12 pt-5">
+                        <div class="col-lg-8 col-md-12 pt-lg-5">
                             <h1 class="@if(Auth::guest()) text-white @endif">
-                                {{ __('Welcome to Botswana Land-board Management System') }}</h1>
+                                {{ __('Welcome to Botswana Landboard Management System') }}</h1>
 
                             <p class="@if(Auth::guest()) text-white @endif text-lead mt-3 mb-0">
                                 {{ __('Log in and manage, apply online for available plots around the country.') }}

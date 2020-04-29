@@ -99,6 +99,7 @@
       <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
       <path value="$PROJECT_DIR$/vendor/jeremykenedy/laravel-users" />
       <path value="$PROJECT_DIR$/vendor/laravel-frontend-presets/paper" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

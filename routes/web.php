@@ -37,6 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/transfer-plot','PlotController@transfer')->name('transfer-plot');
         Route::resource('application','Application');
     });
+
+    Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'as'=>'admin.'], function (){
+        Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    });
 });
 
 Route::group(['middleware' => 'auth'], function () {
