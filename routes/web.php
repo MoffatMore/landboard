@@ -30,9 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix'=>'user', 'namespace'=>'Customer', 'as'=>'customer.'],function (){
         Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-
+        Route::get('/plot/{id}/cancel-transfer', 'HomeController@cancelTransfer')->name('cancel-transfer');
+        Route::get('/plots-advert', 'HomeController@plotsAdvert')->name('plots-advert');
         Route::get('/my-plots', 'HomeController@myPlots')->name('myPlots');
         Route::post('/submit-application','HomeController@submitApplication')->name('application-submit');
+        Route::post('/transfer-plot','PlotController@transfer')->name('transfer-plot');
         Route::resource('application','Application');
     });
 });

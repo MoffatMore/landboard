@@ -52,6 +52,8 @@ class Application extends Controller
                 'last' => $request->last,
                 'contacts'=> $request->contacts,
                 'dob'=>$request->dob,
+                'identifier' => $request->last,
+                'id_no' => $request->last,
                 'postal_address'=> $request->postal_address,
                 'physical_address'=>$request->physical_address
             ]);
@@ -65,6 +67,8 @@ class Application extends Controller
             Profile::create([
                 'user_id' =>Auth::user()->id,
                 'last' => $request->last,
+                'identifier' => $request->last,
+                'id_no' => $request->last,
                 'contacts'=> $request->contacts,
                 'dob'=>$request->dob,
                 'postal_address'=> $request->postal_address,

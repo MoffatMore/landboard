@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\View\ProfileComposer;
+use App\User;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         View::composer(['pages.customer.*'], ProfileComposer::class);
+        View::composer(['pages.customer.manage-plots'],function ($view){
+            return $view->with('users',User::all()->load('profile'));
+        });
     }
 }

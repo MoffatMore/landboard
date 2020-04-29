@@ -27,7 +27,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <a href="#"><i class="fa fa-arrow-circle-right"></i> Click here</a>
+                            <a href="{{ route('customer.plots-advert') }}"><i class="fa fa-arrow-circle-right"></i> Click here</a>
                         </div>
                     </div>
                 </div>

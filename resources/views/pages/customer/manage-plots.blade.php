@@ -18,6 +18,7 @@
                         <th>Location</th>
                         <th>Address</th>
                         <th>Plot Number</th>
+                        <th>Plot Status</th>
                         <th class="text-right">Actions</th>
                     </tr>
                     </thead>
@@ -28,62 +29,104 @@
                             <div class="modal fade" id="model{{ $plot->id }}" tabindex="-1" role="dialog"
                                  aria-labelledby="modelTitle{{ $plot->id }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
-                                    <form method="post"
-                                          action="#">
-                                        @csrf
-                                        <div class="modal-content">
-                                            <div class="modal-header">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
                                                 <h5 class="modal-title">Transfer Plot</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="">Plot No</label>
-                                                    <input type="text" name="plot_no" id="" class="form-control"
-                                                           placeholder="" aria-describedby="helpId" readonly
-                                                           value="{{ $plot->plot_no }}">
+                                        <form action="{{ route('customer.transfer-plot') }}" method="POST">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="">Plot No</label>
+                                                        <input type="text" name="plot_no" id="" class="form-control"
+                                                               placeholder="" aria-describedby="helpId" readonly
+                                                               value="{{ $plot->plot_no }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Location</label>
+                                                        <input type="text" name="location" id="" class="form-control"
+                                                               placeholder="" aria-describedby="helpId" readonly
+                                                               value="{{ $plot->location }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Address</label>
+                                                        <input type="text" name="plot_address" id="" class="form-control"
+                                                               placeholder="" aria-describedby="helpId" readonly
+                                                               value="{{ $plot->address }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Transferee</label>
+                                                        <select class="form-control form-control-sm" name="transferee" id="" size="1">
+                                                            @if (isset($users))
+                                                                @foreach ($users as $user)
+                                                                    @if ($user->id !== Auth::user()->id)
+                                                                        <option value="{{ $user->id }}">
+                                                                            {{ $user->name }} {{ isset($user->profile) ? $user->profile->id_no : '' }}
+                                                                        </option>
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="">Location</label>
-                                                    <input type="text" name="location" id="" class="form-control"
-                                                           placeholder="" aria-describedby="helpId" readonly
-                                                           value="{{ $plot->location }}">
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                                    </button>
+                                                    <button type="submit" class="btn btn-primary">Request</button>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="">Address</label>
-                                                    <input type="text" name="plot_address" id="" class="form-control"
-                                                           placeholder="" aria-describedby="helpId" readonly
-                                                           value="{{ $plot->address }}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="">Transferee</label>
-                                                    <select class="form-control form-control-sm" name="transferee" id="" size="1">
-                                                        <option>More</option>
-                                                        <option>Bash</option>
-                                                        <option>Buno</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                                </button>
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                            </form>
+                                    </div>
                                 </div>
                             </div>
                             <td class="text-center">{{ $plot->id }}</td>
                             <td>{{ $plot->location }}</td>
                             <td>{{ $plot->address }}</td>
                             <td>{{ $plot->plot_no }}</td>
+                            <td>{{ $plot->status === 'approved' ? 'Active' : 'Transfer' }}</td>
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon"
-                                        data-toggle="modal" data-target="#model{{ $plot->id }}">
-                                    <i class="fa fa-exchange" ></i>
-                                </button>
+                                @if ($plot->status === 'approved')
+                                    <button type="button" rel="tooltip" title="Transfer plot" class="btn btn-success btn-sm btn-icon"
+                                            data-toggle="modal" data-target="#model{{ $plot->id }}">
+                                        <i class="fa fa-exchange" ></i>
+                                    </button>
+                                @else
+                                    <button type="button" rel="tooltip" title="Cancel Transfer plot Request"
+                                            class="btn btn-danger btn-sm btn-icon" data-toggle="modal"
+                                            data-toggle="modal" data-target="#delete{{ $plot->id }}">
+                                        <i class="fa fa-trash" ></i>
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="delete{{ $plot->id }}" tabindex="-1" role="dialog"
+                                         aria-labelledby="modelTitle{{ $plot->id }}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Cancel Ownership Transfer</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p style="text-align: justify">By clicking below save button, you agree to cancel request to transfer ownership of this plot</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-warning btn-md"
+                                                            data-dismiss="modal">Close
+                                                    </button>
+                                                    <div class="clearfix"></div>
+                                                    <form method="get" action="{{ route('customer.cancel-transfer',['id'=>$plot->plot_no]) }}">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-info btn-md">Save</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

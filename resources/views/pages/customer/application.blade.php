@@ -56,6 +56,28 @@
                    <div class="row">
                        <div class="col-6">
                            <div class="form-group">
+                               <label for="">Identifier</label>
+                               <select class="form-control form-control-sm"
+                                       name="gender" id="" size="1"
+                                       value="{{ isset($profile) ? $profile->identifier: '' }}"required>
+                                   <option>Omang</option>
+                                   <option>Passport</option>
+                               </select>
+                           </div>
+                       </div>
+                       <div class="col-6">
+                           <div class="form-group">
+                               <label for="">ID/Passport No</label>
+                               <input type="text" name="contacts" id="" class="form-control"
+                                      placeholder="" aria-describedby="helpId"
+                                      value="{{ isset($profile) ? $profile->id_no : '' }}" required>
+                               <small id="helpId" class="text-muted">Help text</small>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-6">
+                           <div class="form-group">
                                <label for="">Contacts</label>
                                <input type="text" name="contacts" id="" class="form-control"
                                       placeholder="" aria-describedby="helpId"
