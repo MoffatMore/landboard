@@ -42,15 +42,6 @@ The above copyright notice and this permission notice shall be included in all c
     <meta itemprop="image" content="https://s3.amazonaws.com/creativetim_bucket/products/209/opt_pd_laravel_thumbnail.jpg">
 
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="product">
-    <meta name="twitter:site" content="@creativetim">
-    <meta name="twitter:title" content="Paper Dashboard Laravel by Creative Tim">
-
-    <meta name="twitter:description" content="Start your development with a Bootstrap 4 Admin Dashboard built for Laravel Framework 5.5 and Up.">
-    <meta name="twitter:creator" content="@creativetim">
-    <meta name="twitter:image" content="https://s3.amazonaws.com/creativetim_bucket/products/209/opt_pd_laravel_thumbnail.jpg">
-
 
     <!-- Open Graph data -->
     <meta property="fb:app_id" content="655968634437471">
@@ -75,16 +66,9 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('paper') }}/demo/demo.css" rel="stylesheet" />
 
-    <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}"/>
-    <link href="{{ asset('css/bootstrap.css') }}">
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NKDMSK6');</script>
-    <!-- End Google Tag Manager -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 </head>
 
 <body class="{{ $class }}">
@@ -108,7 +92,6 @@ The above copyright notice and this permission notice shall be included in all c
     <script src="{{ asset('paper') }}/js/core/bootstrap.min.js"></script>
     <script src="{{ asset('paper') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Chart JS -->
     <script src="{{ asset('paper') }}/js/plugins/chartjs.min.js"></script>
     <!--  Notifications Plugin    -->
@@ -118,7 +101,41 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{ asset('paper') }}/demo/demo.js"></script>
 
+    <!-- Page level plugins -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ],
+                'search': true,
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal( {
+                            header: function ( row ) {
+                                var data = row.data();
+                                return 'File Details for '+data[1];
+                            }
+                        } ),
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                            tableClass: 'table'
+                        } )
+                    }
+                }
+            } );
+        } );
+    </script>
     <!-- Sharrre libray -->
     @stack('scripts')
 

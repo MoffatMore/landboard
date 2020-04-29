@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'class' => '',
+    'class' => 'alert alert-secondary',
     'elementActive' => 'dashboard'
 ])
 
@@ -18,7 +18,8 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Plots Adverts</p>
-                                    <p class="card-title">150
+                                    <p class="card-title">
+                                    {{ $adverts->count() }}
                                     <p>
                                 </div>
                             </div>
@@ -38,7 +39,7 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-money-coins text-success"></i>
+                                    <i class="fa fa-edit text-success"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
@@ -64,13 +65,14 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-vector text-danger"></i>
+                                    <i class="fa fa-home text-info"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Manage Plots</p>
-                                    <p class="card-title">23
+                                    <p class="card-title">
+                                    {{ $plots->count() }}
                                     <p>
                                 </div>
                             </div>
@@ -90,7 +92,7 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-money-coins text-success"></i>
+                                    <i class="fa fa-exclamation text-warning"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">

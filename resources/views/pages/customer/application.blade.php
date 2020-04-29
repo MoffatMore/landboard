@@ -5,6 +5,14 @@
 
 @section('content')
    <div class="container-fluid " style="margin-top: 100px">
+       <div class="container-fluid">
+           <nav aria-label="breadcrumb">
+               <ol class="breadcrumb">
+                   <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                   <li class="breadcrumb-item active" aria-current="page">Plot Application</li>
+               </ol>
+           </nav>
+       </div>
        <div class="card">
            <img class="card-img-top" src="holder.js/100x180/" alt="">
            <div class="card-body">
@@ -16,9 +24,9 @@
                            <div class="form-group">
                                <label for="">Plot Location</label>
                                <select class="form-control form-control-sm" name="plot_location" id="" size="1">
-                                   <option>Molepolole</option>
-                                   <option>Lobatse</option>
-                                   <option>Gaborone</option>
+                                   @foreach ($adverts as $advert)
+                                       <option>{{ $advert->location }}</option>
+                                   @endforeach
                                </select>
                            </div>
                        </div>
@@ -26,9 +34,9 @@
                            <div class="form-group">
                                <label for="">Plot Address/Ward</label>
                                <select class="form-control form-control-sm" name="plot_address" id="" size="1">
-                                   <option>Magokotswana</option>
-                                   <option>Newtown</option>
-                                   <option>Borakalalo</option>
+                                   @foreach ($adverts as $advert)
+                                       <option>{{ $advert->address }}</option>
+                                   @endforeach
                                </select>
                            </div>
                        </div>
