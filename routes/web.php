@@ -40,6 +40,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'as'=>'admin.'], function (){
         Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+        Route::get('/waiting-list', 'HomeController@waitingList')->name('waiting-list');
+        Route::get('/appointments', 'HomeController@appointments')->name('appointments');
+        Route::get('/ownership-transfer', 'HomeController@ownershipTransfer')->name('ownership-transfer');
+        Route::get('/statistics', 'HomeController@statistics')->name('statistics');
+        Route::get('/reject-application/{id}', 'HomeController@rejectApplication')->name('reject-application');
+        Route::post('/accept-application/', 'HomeController@acceptApplication')->name('accept-application');
+        Route::resource('appointment', 'Appointment');
+
+
     });
 });
 

@@ -18,7 +18,8 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Waiting List</p>
-                                    <p class="card-title">150
+                                    <p class="card-title">
+                                    {{ $applications->count() }}
                                     <p>
                                 </div>
                             </div>
@@ -27,7 +28,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Click here
+                            <a href="{{ route('admin.waiting-list') }}"><i class="fa fa-refresh"></i> Click here</a>
                         </div>
                     </div>
                 </div>

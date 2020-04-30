@@ -41,6 +41,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['pages.customer.*'], function ($view){
             return $view->with('applications',Application::where('user_id',Auth::user()->id)->get());
         });
+        View::composer(['pages.admin.*'], function ($view){
+            return $view->with('applications',Application::all()->load(['user.profile','appointments']));
+        });
 
     }
 }

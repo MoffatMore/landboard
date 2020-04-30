@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Application extends Model
+class Appointment extends Model
 {
     //
+
     protected $fillable = [
         'user_id',
-        'plot_location',
-        'plot_address',
-        'status',
+        'application_id',
+        'venue',
+        'date'
     ];
 
     public function user()
@@ -19,8 +20,8 @@ class Application extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function appointments()
+    public function application()
     {
-        return $this->hasMany(Appointment::class);
+        return $this->belongsTo(Application::class);
     }
 }

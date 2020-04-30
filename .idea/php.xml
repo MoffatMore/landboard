@@ -100,6 +100,7 @@
       <path value="$PROJECT_DIR$/vendor/jeremykenedy/laravel-users" />
       <path value="$PROJECT_DIR$/vendor/laravel-frontend-presets/paper" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
+      <path value="$PROJECT_DIR$/vendor/haruncpi/laravel-id-generator" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
