@@ -18,6 +18,7 @@ class CreateOwnershipTransfersTable extends Migration
             $table->foreignId('owner_id');
             $table->string('transferee_id');
             $table->string('plot_no');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

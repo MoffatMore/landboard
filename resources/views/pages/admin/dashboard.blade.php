@@ -67,13 +67,14 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-vector text-danger"></i>
+                                    <i class="fa fa-calendar text-danger"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Appointments</p>
-                                    <p class="card-title">23
+                                    <p class="card-title">
+                                    {{ $appointments->count() }}
                                     <p>
                                 </div>
                             </div>
@@ -82,7 +83,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-clock-o"></i> Click here
+                            <a href="{{ route('admin.appointment.index') }}"><i class="fa fa-clock-o"></i> Click here</a>
                         </div>
                     </div>
                 </div>

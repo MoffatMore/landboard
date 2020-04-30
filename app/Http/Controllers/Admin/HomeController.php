@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Application;
 use App\Http\Controllers\Controller;
+use App\OwnershipTransfer;
 use App\Plot;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
@@ -65,5 +66,31 @@ class HomeController extends Controller
             'status'   =>'approved',
         ]);
         return redirect()->back()->with('status','Successfully accepted an application');
+    }
+
+    public function acceptTransferApplication(Request $request)
+    {
+        $transfer = OwnershipTransfer::find($request->transfer_id);
+
+        $transfer->update([
+            'status' => 'transfered',
+        ]);
+
+        $plot = Plot::find($request->plot_id);
+        $plot->update([
+            'owner_id' => $transfer->transferee_id,
+            'status' => 'approved'
+        ]);
+
+        return redirect()->back()->with('status','Successfully accepted plot transfer');
+    }
+
+    public function rejectTransferApplication(int $id)
+    {
+        $app = OwnershipTransfer::find($id);
+        $app->update([
+            'status'=>'rejected'
+        ]);
+        return redirect()->back()->with('status','Successfully rejected an transfer application');
     }
 }

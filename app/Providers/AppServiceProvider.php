@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Advert;
 use App\Application;
+use App\Appointment;
 use App\Http\View\ProfileComposer;
 use App\OwnershipTransfer;
 use App\Plot;
@@ -54,6 +55,9 @@ class AppServiceProvider extends ServiceProvider
                 'transferee.profile',
                 'plot',
             ]));
+        });
+        View::composer(['pages.admin.*'],function ($view){
+            return $view->with('appointments',Appointment::all()->load('user.profile'));
         });
 
     }

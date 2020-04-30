@@ -45,7 +45,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/ownership-transfer', 'HomeController@ownershipTransfer')->name('ownership-transfer');
         Route::get('/statistics', 'HomeController@statistics')->name('statistics');
         Route::get('/reject-application/{id}', 'HomeController@rejectApplication')->name('reject-application');
+        Route::get('/reject-plot-transfer-application/{id}', 'HomeController@rejectTransferApplication')->name('reject-transfer-application');
+
         Route::post('/accept-application/', 'HomeController@acceptApplication')->name('accept-application');
+        Route::post('/accept-transfer/', 'HomeController@acceptTransferApplication')->name('accept-transfer');
+
         Route::resource('appointment', 'Appointment');
 
 

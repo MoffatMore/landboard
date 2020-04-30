@@ -10,7 +10,8 @@ class OwnershipTransfer extends Model
     protected $fillable = [
         'plot_no',
         'owner_id',
-        'transferee_id'
+        'transferee_id',
+        'status',
     ];
 
     public function plot()

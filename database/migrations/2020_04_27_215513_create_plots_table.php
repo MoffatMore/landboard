@@ -15,7 +15,7 @@ class CreatePlotsTable extends Migration
     {
         Schema::create('plots', function (Blueprint $table) {
             $table->id();
-            $table->string('plot_no');
+            $table->string('plot_no')->unique();
             $table->string('location');
             $table->string('address');
             $table->string('status');

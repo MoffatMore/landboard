@@ -54,12 +54,13 @@
                                  aria-labelledby="modelTitle{{ $transfer->id }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <form method="post"
-                                          action="{{ route('admin.accept-application') }}">
+                                          action="{{ route('admin.accept-transfer') }}">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $transfer->id }}">
+                                        <input type="hidden" name="transfer_id" value="{{ $transfer->id }}">
+                                        <input type="hidden" name="plot_id" value="{{ $transfer->plot->id }}">
                                         <div class="modal-content">
                                             <div class="modal-header alert alert-success text-white">
-                                                <h5 class="modal-title">Plot Application</h5>
+                                                <h5 class="modal-title">Plot Transfer Application</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -80,18 +81,18 @@
                             <div class="modal fade" id="modelDelete{{ $transfer->id }}" tabindex="-1" role="dialog"
                                  aria-labelledby="modelDelete{{ $transfer->id }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
-                                    <form method="get" action="{{ route('admin.reject-application',['id'=>$transfer->id]) }}">
+                                    <form method="get" action="{{ route('admin.reject-transfer-application',['id'=>$transfer->id]) }}">
                                         @csrf
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Delete Application</h5>
+                                            <div class="modal-header alert alert-danger">
+                                                <h5 class="modal-title">Reject Transfer Plot Application</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="container-fluid">
-                                                    Are you sure you want to reject this application?
+                                                    Are you sure you want to reject this plot transfer application?
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -109,7 +110,7 @@
                             <td>{{ $transfer->transferee->name }}</td>
                             <td>{{ $transfer->status }}</td>
                             <td class="td-actions text-right">
-                                @if ($transfer->status !== 'rejected' && $transfer->status !== 'accepted')
+                                @if ($transfer->status !== 'rejected' && $transfer->status !== 'transfered')
                                     <button type="button" rel="tooltip" title="Approve" class="btn btn-success btn-sm btn-icon">
                                         <i class="fa fa-check" data-toggle="modal"
                                            data-target="#model{{ $transfer->id }}"></i>
