@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-globe text-warning"></i>
+                                    <i class="fa fa-user text-warning"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
@@ -28,7 +28,8 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <a href="{{ route('admin.waiting-list') }}"><i class="fa fa-refresh"></i> Click here</a>
+                            <a href="{{ route('admin.waiting-list') }}">
+                                <i class="fa fa-refresh"></i> Click here</a>
                         </div>
                     </div>
                 </div>
@@ -39,13 +40,14 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-money-coins text-success"></i>
+                                    <i class="fa fa-home text-success"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Ownership Transfer</p>
-                                    <p class="card-title">1,345
+                                    <p class="card-title">
+                                    {{ $ownershipTransfer->count() }}
                                     <p>
                                 </div>
                             </div>
@@ -54,7 +56,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-calendar-o"></i> Click here
+                           <a href="{{ route('admin.ownership-transfer') }}"><i class="fa fa-calendar-o"></i> Click here</a>
                         </div>
                     </div>
                 </div>

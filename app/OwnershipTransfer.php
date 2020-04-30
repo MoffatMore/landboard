@@ -22,4 +22,9 @@ class OwnershipTransfer extends Model
     {
         return $this->belongsTo(User::class,'owner_id', 'id');
     }
+
+    public function transferee()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

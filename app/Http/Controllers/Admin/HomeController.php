@@ -58,18 +58,10 @@ class HomeController extends Controller
             'status'=>'accepted'
         ]);
 
-        $config = [
-            'table' => 'plots',
-            'length' => 6,
-            'prefix' => date('y')
-        ];
-        $id = IdGenerator::generate($config);
         Plot::create([
-
             'owner_id' => $app->user_id,
             'location' => $app->plot_location,
             'address' => $app->plot_address,
-            'plot_no' =>$id,
             'status'   =>'approved',
         ]);
         return redirect()->back()->with('status','Successfully accepted an application');
