@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function statistics()
     {
-        return view('pages.admin.statistics-archieves');
+        return view('pages.admin.statistics-archives');
     }
 
     public function appointments()

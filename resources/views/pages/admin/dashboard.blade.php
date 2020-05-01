@@ -100,7 +100,7 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Statistics &  Archives</p>
-                                    <p class="card-title">+45K
+                                    <p class="card-title">
                                     <p>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Update now
+                           <a href="{{ route('admin.statistics') }}"> <i class="fa fa-refresh"></i> Update now</a>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                 <div class="card-body">
                     <center>
                         <div class="alert alert-secondary" role="alert">
-                            <strong>Plot Interview Appointments</strong>
+                            <strong class="h5">Plot Interview Appointments</strong>
                         </div>
                     </center>
                     <!-- markup -->
