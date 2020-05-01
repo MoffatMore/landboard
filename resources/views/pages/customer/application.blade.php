@@ -40,7 +40,7 @@
                            <div class="form-group">
                                <label for="">Plot Location</label>
                                <select class="form-control form-control-sm" name="plot_location" id="" size="1">
-                                   @foreach ($adverts as $advert)
+                                   @foreach ($locations as $advert)
                                        <option>{{ $advert->location }}</option>
                                    @endforeach
                                </select>
@@ -50,7 +50,7 @@
                            <div class="form-group">
                                <label for="">Plot Address/Ward</label>
                                <select class="form-control form-control-sm" name="plot_address" id="" size="1">
-                                   @foreach ($adverts as $advert)
+                                   @foreach ($address as $advert)
                                        <option>{{ $advert->address }}</option>
                                    @endforeach
                                </select>

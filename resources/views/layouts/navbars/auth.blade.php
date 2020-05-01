@@ -6,43 +6,76 @@
             </div>
         </a>
         <a href="{{ route('home') }}" class="simple-text logo-normal">
-            {{ __('BW Landboard MS') }}
+            {{ __('BW Landboard') }}
         </a>
     </div>
-    <div class="sidebar-wrapper">
-        <ul class="nav">
-            <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'dashboard') }}">
-                    <i class="nc-icon nc-bank"></i>
-                    <p>{{ __('Dashboard') }}</p>
-                </a>
-            </li>
-            <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
-                <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
-                    <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
-                    <p>
-                            {{ __('Laravel examples') }}
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse show" id="laravelExamples">
-                    <ul class="nav">
-                        <li class="{{ $elementActive == 'profile' ? 'active' : '' }}">
-                            <a href="{{ route('profile.edit') }}">
-                                <span class="sidebar-mini-icon">{{ __('UP') }}</span>
-                                <span class="sidebar-normal">{{ __(' User Profile ') }}</span>
-                            </a>
+    @if (Auth::user()->hasRole('admin'))
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
+                    <a href="{{ route('home') }}">
+                        <i class="nc-icon nc-bank"></i>
+                        <p>{{ __('Dashboard') }}</p>
+                    </a>
+                </li>
+                <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
+                    <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
+                        <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
+                        <p>
+                            {{ __('Shortcuts') }}
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('admin.waiting-list') }}">Waiting List</a>
                         </li>
-                        <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
-                            <a href="{{ route('page.index', 'user') }}">
-                                <span class="sidebar-mini-icon">{{ __('U') }}</span>
-                                <span class="sidebar-normal">{{ __(' User Management ') }}</span>
-                            </a>
+                        <li>
+                            <a href="{{ route('admin.ownership-transfer') }}">Plots Transfer</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.appointment.index') }}">Interviews</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.statistics') }}">Archives</a>
                         </li>
                     </ul>
-                </div>
-            </li>
-
-        </ul>
-    </div>
+                </li>
+            </ul>
+        </div>
+    @else
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
+                    <a href="{{ route('home') }}">
+                        <i class="nc-icon nc-bank"></i>
+                        <p>{{ __('Dashboard') }}</p>
+                    </a>
+                </li>
+                <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
+                    <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
+                        <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
+                        <p>
+                            {{ __('Shortcuts') }}
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('customer.plots-advert') }}">Adverts</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('customer.application.create') }}">My Applications</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('customer.myPlots') }}">My Plots</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('customer.application.index') }}">Pending Applications</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    @endif
 </div>

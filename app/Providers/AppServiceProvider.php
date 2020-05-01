@@ -38,6 +38,12 @@ class AppServiceProvider extends ServiceProvider
             return $view->with('adverts',Advert::all());
         });
         View::composer(['pages.customer.*',], function ($view){
+            return $view->with('locations',Advert::distinct()->get(['location']));
+        });
+        View::composer(['pages.customer.*',], function ($view){
+            return $view->with('address',Advert::distinct()->get(['address']));
+        });
+        View::composer(['pages.customer.*',], function ($view){
             return $view->with('plots',Plot::where('owner_id',Auth::user()->id)->get());
         });
         View::composer(['pages.customer.*','pages.admin.statistics-archives'], function ($view){
@@ -66,6 +72,25 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['pages.admin.*'],function ($view){
             $events = [];
             foreach (Appointment::all()->load('user.profile') as $ap){
+                $events[] = [
+                    'title'=>'Plot Interview',
+                    'start'=>$ap->date,
+                    'venue' =>$ap->venue,
+                    'extendedProps'=> [
+                        'description'=>'Plot Interview with '. $ap->user->name
+                            . ' at '.$ap->venue,
+                    ],
+                ];
+            }
+            return $view->with(compact('events'));
+        });
+
+        View::composer(['pages.customer.dashboard'],function ($view){
+            $events = [];
+            foreach (Appointment::where('user_id',Auth::user()->id)
+                         ->get()
+                         ->load('user.profile') as $ap){
+
                 $events[] = [
                     'title'=>'Plot Interview',
                     'start'=>$ap->date,

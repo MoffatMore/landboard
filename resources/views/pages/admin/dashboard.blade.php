@@ -29,7 +29,7 @@
                         <hr>
                         <div class="stats">
                             <a href="{{ route('admin.waiting-list') }}">
-                                <i class="fa fa-refresh"></i> Click here</a>
+                                <i class="fa fa-arrow-right"></i> Click here</a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                           <a href="{{ route('admin.ownership-transfer') }}"><i class="fa fa-calendar-o"></i> Click here</a>
+                           <a href="{{ route('admin.ownership-transfer') }}"><i class="fa fa-arrow-right"></i> Click here</a>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <a href="{{ route('admin.appointment.index') }}"><i class="fa fa-clock-o"></i> Click here</a>
+                            <a href="{{ route('admin.appointment.index') }}"><i class="fa fa-arrow-right"></i> Click here</a>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-favourite-28 text-primary"></i>
+                                    <i class="fa fa-file text-primary"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
@@ -109,7 +109,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                           <a href="{{ route('admin.statistics') }}"> <i class="fa fa-refresh"></i> Update now</a>
+                           <a href="{{ route('admin.statistics') }}"> <i class="fa fa-arrow-right"></i> click here</a>
                         </div>
                     </div>
                 </div>
@@ -118,11 +118,7 @@
         <div class="row-cols-6">
             <div class="card">
                 <div class="card-body">
-                    <center>
-                        <div class="alert alert-secondary" role="alert">
-                            <strong class="h5">Plot Interview Appointments</strong>
-                        </div>
-                    </center>
+
                     <!-- markup -->
                     <div id="calendar" class="mt-3"></div>
             </div>
