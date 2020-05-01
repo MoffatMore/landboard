@@ -60,5 +60,21 @@ class AppServiceProvider extends ServiceProvider
             return $view->with('appointments',Appointment::all()->load('user.profile'));
         });
 
+        View::composer(['pages.admin.*'],function ($view){
+            $events = [];
+            foreach (Appointment::all()->load('user.profile') as $ap){
+                $events[] = [
+                    'title'=>'Plot Interview',
+                    'start'=>$ap->date,
+                    'venue' =>$ap->venue,
+                    'extendedProps'=> [
+                        'description'=>'Plot Interview with '. $ap->user->name
+                            . ' at '.$ap->venue,
+                    ],
+                ];
+            }
+            return $view->with(compact('events'));
+        });
+
     }
 }

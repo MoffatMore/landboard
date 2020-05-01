@@ -115,14 +115,86 @@
                 </div>
             </div>
         </div>
+        <div class="row-cols-6">
+            <div class="card">
+                <div class="card-body">
+                    <center>
+                        <div class="alert alert-secondary" role="alert">
+                            <strong>Plot Interview Appointments</strong>
+                        </div>
+                    </center>
+                    <!-- markup -->
+                    <div id="calendar" class="mt-3"></div>
+            </div>
+        </div>
     </div>
 @endsection
 
 @push('scripts')
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
+    <script src="https://unpkg.com/@fullcalendar/core@4.4.0/main.min.js"></script>
+    <script src="https://unpkg.com/@fullcalendar/daygrid@4.4.0/main.min.js"></script>
+    <script src="https://unpkg.com/@fullcalendar/timegrid@4.4.0/main.min.js"></script>
+    <script src="https://unpkg.com/@fullcalendar/list@4.4.0/main.min.js"></script>
+    <script src="https://unpkg.com/@fullcalendar/bootstrap@4.4.0/main.min.js"></script>
+    <script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-            demo.initChartsPages();
+        document.addEventListener('DOMContentLoaded', function() {
+            let events= {!! json_encode($events) !!};
+
+            console.log(events);
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: [ 'dayGrid', 'timeGrid', 'list', 'bootstrap' ],
+                timeZone: 'UTC+2',
+                defaultView: 'dayGridMonth',
+                themeSystem: 'bootstrap',
+                header: {
+                    left: 'prevYear,prev,next,nextYear today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                businessHours: [ // specify an array instead
+                    {
+                        daysOfWeek: [ 1, 2, 3 ], // Monday, Tuesday, Wednesday
+                        startTime: '08:00', // 8am
+                        endTime: '18:00' // 6pm
+                    },
+                    {
+                        daysOfWeek: [ 4, 5 ], // Thursday, Friday
+                        startTime: '08:00', // 10am
+                        endTime: '18:00' // 4pm
+                    }
+                ],
+                weekNumbers: false,
+                weekends: false,
+                contentHeight: 400,
+                eventLimit: true,
+                events: events,
+                eventColor: '#5393e0',
+                eventTextColor: 'white',
+                eventTimeFormat: { // like '14:30:00'
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    meridiem: false
+                },
+                eventRender: function (info) {
+
+                    $(info.el).tooltip({
+                        title: info.event.extendedProps.description,
+                        trigger: 'hover',
+                        placement: 'top',
+                        container: 'body',
+                    });
+                }
+            });
+
+            calendar.render();
         });
+        <!-- javascript for init -->
+
     </script>
 @endpush
